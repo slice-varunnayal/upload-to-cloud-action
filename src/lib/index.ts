@@ -53,7 +53,7 @@ export async function startUploading(
     await _uploadFile(store, chunk)
   }
 
-  const commonShareParams: CommonShareOutputParams = { uploadCount: pathList.length }
+  const commonShareParams: CommonShareOutputParams = { storeName: buildParams.storeName, uploadCount: pathList.length }
   const outputParams = store.shareOutput(buildParams, commonShareParams)
   _setOutput(outputParams)
 }

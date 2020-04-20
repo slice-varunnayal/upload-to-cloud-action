@@ -65,6 +65,7 @@ export default class S3Store extends BaseStore {
 
   shareOutput(params: S3BuildParams, commonOutputParams: CommonShareOutputParams): ShareOutputParams {
     return Object.assign(commonOutputParams, {
+      s3Path: this.path,
       s3BaseUrl: `https://${params.bucket}.s3.${params.region}.amazonaws.com/${params.path}`
     })
   }

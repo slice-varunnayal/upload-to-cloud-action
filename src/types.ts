@@ -29,6 +29,11 @@ export interface S3ShareOutputParams {
    * S3 Url in format https://<bucket>.s3.region.amazonaws.com/<base-path>'.
    */
   s3BaseUrl: string
+
+  /**
+   * Path where files were uploaded.
+   */
+  s3Path: string
 }
 
 //#endregion S3 Types
@@ -61,6 +66,7 @@ export type StoreBuildParams = {
 } & S3BuildParams
 
 export interface CommonShareOutputParams {
+  storeName: StoreTypes
   uploadCount: number
 }
 

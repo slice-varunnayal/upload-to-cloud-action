@@ -12,13 +12,13 @@ This action will allow you to upload a directory from the given source to the gi
 
 |Parameter|Required|Description|Scope|
 |-|-|-|-|
-|`store_name`|Yes|cloud storage provider name. Currently only **s3** is supported|common|
+|`store_name`|true|cloud storage provider name. Currently only **s3** is supported|common|
 |`source_dir`|true|source directory to sync with s3. It could be a file name as well|common|
 |`s3_access_key_id`|true|aws access id. If missing AWS_ACCESS_KEY_ID is picked from EnvVar|s3|
 |`s3_secret_access_key`|true|aws secret access key. If missing AWS_SECRET_ACCESS_KEY is picked from EnvVar|s3|
 |`s3_region`|true|aws region. If missing AWS_REGION is picked from EnvVar|s3|
-|`s3_bucket_name`|false|aws bucket name used to upload file|s3|
 |`s3_path`|true|Returns the path to upload file to. Any input parameter can be included with function signature to return the value.|s3|
+|`s3_bucket_name`|false|aws bucket name used to upload file|s3|
 |`s3_acl`|false|Canned ACL to use while uploading file. See [canned-acl](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl)|s3|
 |`s3_cache_control`|false|Sets the Cache-Control property on the uploaded file. Example value= `max-age=86400`|s3|
 
@@ -64,7 +64,9 @@ Sample example:
 |Parameter|Description|Scope|
 |-|-|-|
 |`uploadCount`|Total number of files uploaded|common|
+|`storeName`|Cloude store name|common|
 |`s3BaseUrl`|S3 Base URL in format `https://<bucket>.s3.<region>.amazonaws.com/<path>`|s3|
+|`s3Path`|S3 Path `<path>`|s3|
 
 ## Usage
 
