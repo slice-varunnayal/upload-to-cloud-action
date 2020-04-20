@@ -1,6 +1,7 @@
 ## Custom
 tmp
-lib
+__tests__/runner/*
+/lib/**/*
 
 # Created by https://www.gitignore.io/api/vim,node,webstorm+all,intellij+all,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=vim,node,webstorm+all,intellij+all,visualstudiocode
