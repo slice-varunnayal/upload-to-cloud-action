@@ -41,4 +41,5 @@ jobs:
           }
     - name: Test output
       run: |
-        echo ${{ steps.upload_test.outputs.s3_base_url }}
+        echo Base Url: ${{ steps.upload_test.outputs.s3BaseUrl }}
+        echo Upload #: ${{ steps.upload_test.outputs.uploadCount }}
