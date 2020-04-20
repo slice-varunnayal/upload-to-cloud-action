@@ -37,7 +37,7 @@ jobs:
             const ymd = date[0];
             const hms = date[1].split('.')[0].replace(/:/g, '_');
             console.log(`Date Split: ${ymd}, ${hms}`);
-            return `payment-svc/dev/${ymd}/${hms}`
+            return `my-service/release/${ymd}/${hms}`
           }
     - name: Test output
       run: |
