@@ -1,8 +1,8 @@
 {
-  "name": "typescript-action-template",
-  "version": "0.0.0",
+  "name": "upload-to-cloud-action",
+  "version": "0.0.1",
   "private": true,
-  "description": "TypeScript template action",
+  "description": "Github action to upload file to cloud store",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
@@ -16,22 +16,31 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/slice-varunnayal/typescript-action-template.git"
+    "url": "git+https://github.com/slice-varunnayal/upload-to-cloud-action.git"
   },
   "keywords": [
     "actions",
     "node",
-    "setup"
+    "setup",
+    "cloud upload",
+    "s3",
+    "aws"
   ],
-  "author": "YourNameOrOrganization",
+  "author": "SlicePay",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.3"
+    "@actions/core": "^1.2.3",
+    "aws-sdk": "^2.658.0",
+    "klaw-sync": "^6.0.0",
+    "lodash.set": "^4.3.2",
+    "mime": "^2.4.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
     "@types/jest": "^25.2.1",
+    "@types/lodash.set": "^4.3.6",
+    "@types/mime": "^2.0.1",
     "@types/node": "^13.13.0",
     "@typescript-eslint/parser": "^2.28.0",
     "@zeit/ncc": "^0.22.1",

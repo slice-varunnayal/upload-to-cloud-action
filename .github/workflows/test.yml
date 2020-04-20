@@ -14,10 +14,31 @@ jobs:
     - run: |
         npm install
         npm run all
-  test: # make sure the action works on a clean machine without building
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
     - uses: ./
+      id: upload_test
+      env:
+        S3_ACL: 'public-read'
       with:
-        milliseconds: 1000
+        store_name: 's3'
+        source_dir: 'src/stores'
+        s3_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        s3_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        s3_region: ${{ secrets.AWS_REGION }}
+        s3_bucket_name: ${{ secrets.AWS_UPLOAD_BUCKET }}
+        s3_acl: |
+          function generateInputValue() {
+            console.log(env.S3_ACL);
+            core.info('Log from custom input value generator function');
+            return env.S3_ACL; // process.env is available as env
+          }
+        s3_path: |
+          function generateInputValue() {
+            const date = new Date().toISOString().split('T');
+            const ymd = date[0];
+            const hms = date[1].split('.')[0].replace(/:/g, '_');
+            console.log(`Date Split: ${ymd}, ${hms}`);
+            return `payment-svc/dev/${ymd}/${hms}`
+          }
+    - name: Test output
+      run: |
+        echo ${{ steps.upload_test.outputs.s3_base_url }}

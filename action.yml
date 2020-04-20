@@ -1,10 +1,45 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Upload to Cloud Storage'
+description: 'Uploading directory to cloud storage'
+author: 'varun.nayal@sliceit.com'
+branding:
+  icon: 'upload-cloud'
+  color: 'blue'
 inputs:
-  myInput:              # change this
-    description: 'input description here'
-    default: 'default value if applicable'
+  store_name:
+    description: 'cloud storage provider. Currently is should be s3 only'
+    required: true
+  source_dir:
+    description: 'source directory to sync with s3'
+    required: true
+  s3_access_key_id:
+    description: 'aws access id. If missing AWS_ACCESS_KEY_ID is picked from EnvVar'
+    required: true
+  s3_secret_access_key:
+    description: 'aws secret access key. If missing AWS_SECRET_ACCESS_KEY is picked from EnvVar'
+    required: true
+  s3_region:
+    description: 'aws region. If missing AWS_REGION is picked from EnvVar'
+    required: true
+  s3_bucket_name:
+    description: 'aws bucket name used to upload file'
+  s3_path:
+    description: |
+      Returns the path to upload file to. Any input parameter can be included with function signature to return the value.
+      function generateInputValue() {
+        const date = new Date().toISOString();
+        const ymd = date.split('T')[0]
+        const hms = date.split('T')[1].split('.')[0].replace(/:/g, '_');
+        return `/payment/master/${ymd}/${hms}`;
+      }
+      required: true
+  s3_acl:
+    description: 'Canned ACL to use while uploading file. See https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl'
+    default: public-read
+  s3_cache_control:
+    description: Sets the Cache-Control property on the uploaded file. Example value= "max-age=86400"
+    required: false
+output:
+  upload_count: true
 runs:
   using: 'node12'
   main: 'dist/index.js'
