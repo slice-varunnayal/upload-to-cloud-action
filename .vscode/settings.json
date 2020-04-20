@@ -1,0 +1,31 @@
+// Ensure
+// - Prettier extension is installed
+{
+  "editor.tabSize": 2,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // Usually autoformatting on paste adds extra line break.
+  "editor.formatOnPaste": false,
+  "[javascript]": {
+    "editor.formatOnSave": true,
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true,
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "prettier.eslintIntegration": true,
+  "eslint.validate": [
+    "javascript",
+    {
+      "language": "typescript",
+      "autoFix": true
+    }
+  ],
+  "markdown.extension.toc.githubCompatibility": true,
+  "markdown.extension.toc.omittedFromToc": {
+    "./docs/tooling.md": [
+      // "# Tooling Setup" // If provided then any links under this will now appear in TOC
+    ]
+  }
+}
